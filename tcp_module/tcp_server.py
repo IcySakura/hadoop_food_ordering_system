@@ -1,4 +1,4 @@
-from tcp_config import *
+from tcp_module.tcp_config import *
 
 DEBUG_TAG = "[tcp_server]:"
 

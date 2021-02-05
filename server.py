@@ -1,4 +1,4 @@
-from tcp_server import *
+from tcp_module.tcp_server import *
 
 # Declare global variables here
 DEBUG_TAG = "[server]:"
