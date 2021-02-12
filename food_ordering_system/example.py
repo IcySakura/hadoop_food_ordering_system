@@ -1,5 +1,7 @@
 from json_parser import *
 from restaurant import restaurant
+from order import order
+from confirmation import confirmation
 
 def run_eample_one():
     #example 1: simulate json passed as string:
@@ -44,6 +46,64 @@ def run_eample_two():
     example_restraunt_json_output_path = "../restaurant_json/sample_restaurant_output.json"
     write_dict_to_json_file(sample_restaurant_dict, example_restraunt_json_output_path)
 
+def run_eample_three():
+    #example 3: load json file of order as order class object, edit data, and write back to json file
+
+    #Step 1) Load json file as dict:
+    example_order_json_path = "../order_json/order_id_1.json"
+    data_as_dict = load_json_file_as_dict(example_order_json_path)
+
+    #Step 2) Create restraunt object and read in dict:
+    sample_order = order(data_as_dict)
+
+    #Step 3) *optional* update restraunt data:
+
+    #Step 4) Write restraunt to json file:
+    sample_order_dict = sample_order.convert_to_dict()
+    ##json_pretty_print(sample_order_dict)
+
+    example_order_json_output_path = "../order_json/sample_order_output.json"
+    write_dict_to_json_file(sample_order_dict, example_order_json_output_path)
+
+def run_eample_four():
+    #example 4: load json file of confirmation as confirmation class object, edit data, and write back to json file
+
+    #Step 1) Load json file as dict:
+    example_confirmation_path = "../confirmation_json/order_id_1_confirmation.json"
+    data_as_dict = load_json_file_as_dict(example_confirmation_path)
+
+    #Step 2) Create restraunt object and read in dict:
+    sample_confirmation = confirmation(data_as_dict)
+
+    #Step 3) *optional* update restraunt data:
+
+    #Step 4) Write restraunt to json file:
+    sample_confirmation_dict = sample_confirmation.convert_to_dict()
+    json_pretty_print(sample_confirmation_dict)
+
+    example_confirmation_json_output_path = "../confirmation_json/sample_confirmation_output.json"
+    write_dict_to_json_file(sample_confirmation_dict, example_confirmation_json_output_path)
+
+def run_test_location():
+    #Step 1) Load restaurant:
+    example_restaurant_json_path = "../restaurant_json/resaurant_id_1_in_n_out.json"
+    data_as_dict = load_json_file_as_dict(example_restaurant_json_path)
+    sample_restaurant = restaurant(data_as_dict)
+
+    #Step 2) Load order:
+    example_order_json_path = "../order_json/order_id_1.json"
+    data_as_dict = load_json_file_as_dict(example_order_json_path)
+    sample_order = order(data_as_dict)
+
+    #Step 3) Calculate distance:
+    sample_restaurant_location = sample_restaurant.info.location
+    sample_order_location = sample_order.info.location
+    distance = sample_order_location.caluclate_distance_to_location(sample_restaurant_location)
+    print("Distance = {}".format(distance))
+    
 if __name__ == "__main__":
     #run_eample_one()
-    run_eample_two()
+    #run_eample_two()
+    #run_eample_three()
+    #run_eample_four()
+    run_test_location()

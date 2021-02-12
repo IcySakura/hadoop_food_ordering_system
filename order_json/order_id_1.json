@@ -1,0 +1,24 @@
+{
+  "order_id": "1",
+  "customer_id": "1",
+  "customer_info": {
+    "name": "Claire",
+    "phone":"1 (661) 123-4567",
+    
+    "location":{
+      "lat": "33.650876",
+      "lon": "-117.827445"
+    }
+  },
+  "preferred_max_distance_km":"20.0",
+  "order":[
+    { "menu_item_name":"ribs",
+      "menu_item_id": "4",
+      "menu_item_quantity": "1"
+    },
+    { "menu_item_name":"fries",
+      "menu_item_id": "2",
+      "menu_item_quantity": "1"
+    }
+    ]
+}
