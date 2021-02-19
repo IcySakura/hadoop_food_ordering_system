@@ -1,0 +1,37 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #fffee8; }
+	</style>
+{% endblock %}
+
+
+{% block title %}
+Word Count
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="col-sm-6">
+      <h1 class="pt-5 pb-2">Results</h1>
+
+      <p><a href="{{ url_for('index') }}">Return to home page</a></p>
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+    
+    </div>
+</div>
+
+{% endblock %}
