@@ -1,7 +1,10 @@
 from json_parser import *
 from restaurant import restaurant
-from order import order
+from order import order, construct_order_object
 from confirmation import confirmation
+
+from constants import MENU_ITEM_NAME_KEY, MENU_ITEM_ID_KEY, MENU_ITEM_QUANTITY_KEY
+
 
 def run_eample_one():
     #example 1: simulate json passed as string:
@@ -100,10 +103,30 @@ def run_test_location():
     sample_order_location = sample_order.info.location
     distance = sample_order_location.caluclate_distance_to_location(sample_restaurant_location)
     print("Distance = {}".format(distance))
+
+def run_example_order_generation():
+    #Step 1) Construct a dict (like this) for each item you want to order:
+    sample_order_item_1 = {MENU_ITEM_NAME_KEY: "hamburger",
+                          MENU_ITEM_ID_KEY: "1",
+                          MENU_ITEM_QUANTITY_KEY: "1"}
+    sample_order_item_2 = {MENU_ITEM_NAME_KEY: "fries",
+                          MENU_ITEM_ID_KEY: "2",
+                          MENU_ITEM_QUANTITY_KEY: "1"}
+
+    #Step 2) Place in a list:
+    sample_order_items = [sample_order_item_1, sample_order_item_2]
+
+    #Step 3) Construct order using this function:
+    ##NOTE: there are additional params, but by default it will randomly generate them
+    order_object = construct_order_object(sample_order_items)
+
+    #Step 4) *optional* print json object:
+    json_pretty_print(order_object.convert_to_dict())
     
 if __name__ == "__main__":
     #run_eample_one()
     #run_eample_two()
     #run_eample_three()
     #run_eample_four()
-    run_test_location()
+    #run_test_location()
+    run_example_order_generation()
