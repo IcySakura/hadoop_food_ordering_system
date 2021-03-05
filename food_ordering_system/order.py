@@ -22,6 +22,9 @@ class order:
         if len(order_dict) != 0:
             self.load_order_from_dict(order_dict)
 
+    def count_number_of_order_items(self):
+        return len(self.order_items)
+
     def load_order_from_dict(self, order_dict):
         if ORDER_ID_KEY in order_dict:
             self.order_id = order_dict[ORDER_ID_KEY]

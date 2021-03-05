@@ -2,6 +2,7 @@ from json_parser import *
 from restaurant import restaurant
 from order import order, construct_order_object
 from confirmation import confirmation
+from wait_time import calculate_approximate_wait_time_and_number_of_cooks_occupied, calculate_static_prep_time, calculate_driving_time
 
 from constants import MENU_ITEM_NAME_KEY, MENU_ITEM_ID_KEY, MENU_ITEM_QUANTITY_KEY
 
@@ -122,6 +123,34 @@ def run_example_order_generation():
 
     #Step 4) *optional* print json object:
     json_pretty_print(order_object.convert_to_dict())
+
+
+def run_example_wait_time():
+    print("Make sure you have downloaded the google maps key file and 'PATH_TO_GOOGLE_MAPS_KEY' is correct")
+    #Step 1) Load order:
+    example_order_json_path = "../order_json/order_id_1.json"
+    data_as_dict = load_json_file_as_dict(example_order_json_path)
+    sample_order = order(data_as_dict)
+
+    #Step 2)Load (corresponding) restraunt:
+    example_restaurant_json_path = "../restaurant_json/resaurant_id_1_in_n_out.json"
+    data_as_dict = load_json_file_as_dict(example_restaurant_json_path)
+    sample_restaurant = restaurant(data_as_dict)
+
+    #Step 3) *Optional* Print out info about order and restraunt:
+    (prep_time,_) = calculate_static_prep_time(sample_restaurant.max_capacity, sample_order.count_number_of_order_items())
+    drive_time = calculate_driving_time(sample_order.info.location,sample_restaurant.info.location)
+    print("Prep time (using max_capacity) = {} mins\nCurrent Drive Time = {} mins\n".format(prep_time,drive_time))
+
+    #Step 4)Calaculate wait time using max_capacity:
+    (wait_time, estimated_number_of_cooks_occupied_by_task) = calculate_approximate_wait_time_and_number_of_cooks_occupied(sample_order, sample_restaurant, current_capacity=0, use_current_capacity=False)
+    print("At max capacity, the wait time will be {} mins [max(prep_time,drive_time)]. The number of cooks needed is ~{}\n".format(wait_time, estimated_number_of_cooks_occupied_by_task))
+
+    #Step 5) *optional* use current capcity to calculate wait time:
+    current_capcity = 1
+    (wait_time, estimated_number_of_cooks_occupied_by_task) = calculate_approximate_wait_time_and_number_of_cooks_occupied(sample_order, sample_restaurant, current_capacity=current_capcity, use_current_capacity=True)
+    print("At current capacity of {}, the wait time will be ~{} mins. The number of cooks needed is ~{}\n".format(current_capcity,wait_time, estimated_number_of_cooks_occupied_by_task))
+
     
 if __name__ == "__main__":
     #run_eample_one()
@@ -129,4 +158,5 @@ if __name__ == "__main__":
     #run_eample_three()
     #run_eample_four()
     #run_test_location()
-    run_example_order_generation()
+    #run_example_order_generation()
+    run_example_wait_time()
