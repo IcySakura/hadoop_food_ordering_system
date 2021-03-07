@@ -10,6 +10,7 @@ from json_parser import *
 from restaurant import restaurant
 from order import order
 from location import *
+from mysql_module_lib import *
 
 current_order = None
 current_order_items = []
@@ -30,7 +31,11 @@ for line in sys.stdin:
 
         if current_order is None:
             current_order = order(data_as_dict)
-            current_order_items = [m_item.name for m_item in current_order.order_items]
+            current_order_needed_capacity = 0
+            for m_item in current_order.order_items:
+                current_order_items.append(m_item.name)
+                current_order_needed_capacity += m_item.quantity    # each item should have different prep capacity
+            new_order(current_order.order_id, current_order.customer_id, current_order_needed_capacity)
             print(current_json_path)
         else:
             current_restaurant = restaurant(data_as_dict)

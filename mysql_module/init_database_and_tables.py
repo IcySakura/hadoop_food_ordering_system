@@ -1,6 +1,19 @@
 from mysql_config import *
+from mysql_module_lib import *
+import sys
+
+sys.path.append('../json_module')
+from json_parser import *
+from restaurant import restaurant
+
+from os import walk
 
 if __name__ == "__main__":
+
+  if len(sys.argv) < 2:
+    print("required parameter: [path_of_restaurant_json_files]")
+    exit()
+
   mydb = mysql.connector.connect(
     host="localhost",
     user=MYSQL_USERNAME,
@@ -40,9 +53,23 @@ if __name__ == "__main__":
   mycursor.execute("TRUNCATE orders")
   mycursor.execute("TRUNCATE restaurants")
 
+  # Load all restaurants
+  for (dirpath, dirnames, filenames) in walk(sys.argv[1]):
+    for filename in filenames:
+      data_as_dict = load_json_file_as_dict(dirpath + filename)
+      current_restaurant = restaurant(data_as_dict)
+      sql = "INSERT INTO restaurants (restaurant_id, max_capacity, current_capacity) VALUES (%s, %s, %s)"
+      val = (current_restaurant.id, current_restaurant.max_capacity, current_restaurant.max_capacity)
+      mycursor.execute(sql, val)
+
+  mydb.commit()
+
+
   mycursor.execute("SHOW TABLES")
 
   # print("Existing tables:")
   for x in mycursor:
     print(x)
+  
+  show_table("restaurants")
 
