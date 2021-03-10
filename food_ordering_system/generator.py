@@ -1,5 +1,6 @@
 import uuid
 import random
+from random import choice
 
 #constants (can edit):
 FIRST_NAMES = ["Alice","Bob", "Charlie"]
@@ -29,3 +30,5 @@ def generate_location(center=UCI_COORDS,radius=DEFAULT_RADIUS_IN_KM):
 def generate_phone_number():
     #for now, just return a constant
     return "(123) 456-7890"
+
+    

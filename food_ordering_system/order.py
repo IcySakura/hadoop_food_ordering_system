@@ -6,6 +6,8 @@ from info import info
 from menu_item import menu_item
 from generator import generate_unique_id, generate_customer_name, generate_location, generate_phone_number
 
+from random import choice, sample, randrange
+
 #TODO: add type checking, conversion to correct type
 
 def is_blank(to_check):
@@ -86,4 +88,24 @@ def construct_order_object(items_to_order, customer_max_distance=10.0, order_id=
     the_order = order(dictionary_to_construct_order)
     return the_order
 
+
+def create_random_order(menu_item_id_to_restraunt_id, restraunt_id_to_menu_item_id, menu_item_dict,restraunt_id_dict,max_number_of_unique_dishes_to_order=3, max_quantity_per_dish=3):
+    select_random_dish = choice(list(menu_item_dict.keys()))
+    select_random_restraunt_that_serves_random_dish = choice(list(menu_item_id_to_restraunt_id[select_random_dish]))
+
+    additional_dish_ids = restraunt_id_to_menu_item_id[select_random_restraunt_that_serves_random_dish]
+    additional_dish_ids.remove(select_random_dish)
+
+    number_of_additional_dishes = randrange(0, min(max_number_of_unique_dishes_to_order, len(additional_dish_ids)))
+    select_additional_random_dish_list = sample(additional_dish_ids, number_of_additional_dishes)
+
+    dishes_to_order = [select_random_dish] + select_additional_random_dish_list
+
+    order_items = []
+    for each_dish_id in dishes_to_order:
+        the_item = menu_item_dict[each_dish_id]
+        the_item.quantity = randrange(1,max_quantity_per_dish)
+        order_items.append(the_item.convert_to_dict())
+
+    return construct_order_object(order_items)
     

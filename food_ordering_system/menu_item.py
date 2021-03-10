@@ -11,6 +11,9 @@ class menu_item:
         if len(menu_dict) != 0:
             self.load_menu_item_from_dict(menu_dict)
 
+    def has_id(self):
+        return isinstance(self.id,str) and len(self.id) > 0 or self.id >= 0
+
     def load_menu_item_from_dict(self,menu_dict):
         if MENU_ITEM_NAME_KEY in menu_dict:
             self.name = menu_dict[MENU_ITEM_NAME_KEY]

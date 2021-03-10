@@ -14,6 +14,12 @@ class restaurant:
         if len(restaurant_dict) != 0:
             self.load_restaurant_from_dict(restaurant_dict)
 
+    def has_menu_items(self):
+        return len(self.menu_items) > 0
+
+    def has_id(self):
+        return isinstance(self.id,str) and len(self.id) > 0 or self.id >= 0
+
     def load_restaurant_from_dict(self, restaurant_dict):
         if RESTAUARNT_ID_KEY in restaurant_dict:
             self.id = restaurant_dict[RESTAUARNT_ID_KEY]

@@ -1,0 +1,28 @@
+{
+  "restaurant_id": "4",
+  "restaurant_info": {
+    "name": "Flower Child",
+    "phone":"+1 (949) 200-8141",
+    
+    "location":{
+      "lat": "33.639050",
+      "lon": "-117.860708"
+    }
+  },
+  "restaurant_capacity":"3",
+  "restaurant_menu":[
+    { "menu_item_name":"salad",
+      "menu_item_id": "5",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"rice",
+      "menu_item_id": "6",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"chicken",
+      "menu_item_id": "7",
+      "menu_item_quantity": "3"
+    }
+    ]
+  
+}

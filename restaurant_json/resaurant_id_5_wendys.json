@@ -1,0 +1,28 @@
+{
+  "restaurant_id": "5",
+  "restaurant_info": {
+    "name": "Wendy's Irvine",
+    "phone":"+1 (949) 554-1567",
+    
+    "location":{
+      "lat": "33.664438",
+      "lon": "-117.856694"
+    }
+  },
+  "restaurant_capacity":"2",
+  "restaurant_menu":[
+    { "menu_item_name":"hamburger",
+      "menu_item_id": "1",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"fries",
+      "menu_item_id": "2",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"milk shake",
+      "menu_item_id": "3",
+      "menu_item_quantity": "3"
+    }
+    ]
+  
+}
