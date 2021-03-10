@@ -4,6 +4,7 @@ from order import order, construct_order_object, create_random_order
 from confirmation import confirmation
 from wait_time import calculate_approximate_wait_time_and_number_of_cooks_occupied, calculate_static_prep_time, calculate_driving_time
 from aggregator import create_all_restraunts_from_json_files_in_folder, create_map_of_menu_items
+from display_restaurant_info import get_restaurant_info_from_id
 
 from constants import MENU_ITEM_NAME_KEY, MENU_ITEM_ID_KEY, MENU_ITEM_QUANTITY_KEY
 
@@ -207,6 +208,19 @@ def run_generate_random_order():
     #Step 4) *optional* print order
     print("random order:")
     print(json_pretty_print(order.convert_to_dict()))
+
+def run_example_display_restaurant_info():
+    #Step 1) Load all restraunt and order details
+    PATH_TO_FOLDER = "C:\\Users\\wills\\Desktop\\hadoop_food_ordering_system\\restaurant_json" #update this path to be path to restraunt json folder
+    list_of_restraunts = create_all_restraunts_from_json_files_in_folder(PATH_TO_FOLDER)
+    (_,_,_,restraunt_id_dict) = create_map_of_menu_items(list_of_restraunts)
+
+    #Step 2) get id (to print info of):
+    the_id = "1"
+
+    #Step 3) Get info, and print it:
+    (the_name, the_phone_number, the_google_maps_link) = get_restaurant_info_from_id(the_id, restraunt_id_dict)
+    print("restaurant details:\n\tname = {}\n\tphone = {}\n\tgoogle maps link = {}\n".format(the_name, the_phone_number, the_google_maps_link))
           
     
 if __name__ == "__main__":
@@ -220,3 +234,4 @@ if __name__ == "__main__":
     run_list_of_unique_restaurants()
     run_list_of_unique_menu_items()
     run_generate_random_order()
+    run_example_display_restaurant_info()
