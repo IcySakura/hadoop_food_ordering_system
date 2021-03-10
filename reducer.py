@@ -10,6 +10,7 @@ from json_parser import *
 from restaurant import restaurant
 from order import order
 from mysql_module_lib import *
+from wait_time import calculate_approximate_wait_time_and_number_of_cooks_occupied, calculate_static_prep_time, calculate_driving_time
 
 current_order = None
 current_order_info = None
@@ -21,7 +22,7 @@ current_json_path = ""
 confirmation_json_path = parent_dir + "data/confirmation_json/"
 
 def get_estimated_waiting_time(order_info, restaurant_id):
-    result = 10 * 60  # Base time of 10 mins
+    result = 5 * 60  # Base time of 5 mins
     restaurant_info = get_restaurant_info(restaurant_id)
     if restaurant_info[2] >= order_info[3]:
         result += 2 * 60    # Asuming each item will cost 2 mins; here all capacity can be used...
@@ -54,6 +55,9 @@ for line in sys.stdin:
         else:
             current_restaurant = restaurant(data_as_dict)
             current_restaurant_estimated_waiting_time = get_estimated_waiting_time(current_order_info, current_restaurant.id)
+            current_restaurant_estimated_drive_time = calculate_driving_time(current_order.info.location, current_restaurant.info.location) * 60
+            print("current_restaurant_estimated_waiting_time:", current_restaurant_estimated_waiting_time, ", current_restaurant_estimated_drive_time:", current_restaurant_estimated_drive_time)
+            current_restaurant_estimated_waiting_time = max(current_restaurant_estimated_waiting_time, current_restaurant_estimated_drive_time)
             if current_lowest_waiting_time > current_restaurant_estimated_waiting_time:
                 current_lowest_waiting_time = current_restaurant_estimated_waiting_time
                 current_lowest_waiting_time_restaurant = current_restaurant

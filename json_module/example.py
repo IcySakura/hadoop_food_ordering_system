@@ -106,6 +106,6 @@ def run_test_location():
 if __name__ == "__main__":
     #run_eample_one()
     #run_eample_two()
-    #run_eample_three()
+    run_eample_three()
     #run_eample_four()
-    run_test_location()
+    # run_test_location()
