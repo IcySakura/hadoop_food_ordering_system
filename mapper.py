@@ -29,7 +29,7 @@ for line in sys.stdin:
         current_json_path = parent_dir + json_file_path
         data_as_dict = load_json_file_as_dict(current_json_path)
 
-        if current_order is None:
+        if "order_id" in data_as_dict.keys():
             current_order = order(data_as_dict)
             current_order_needed_capacity = 0
             for m_item in current_order.order_items:

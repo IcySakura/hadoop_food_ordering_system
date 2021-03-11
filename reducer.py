@@ -38,6 +38,15 @@ def get_estimated_waiting_time(order_info, restaurant_id):
         result -= estimated_remaining_capacity * 2 * 60 # Assuming restaurant can restore 1 capacity per 2 mins
         result += estimated_remaining_items * 2 * 60    # Asumming each item will cost 2 mins
 
+def confirm_order_with_current_lowest_waiting_time_restaurant():
+    update_restaurant_current_capacity(current_lowest_waiting_time_restaurant.id, get_restaurant_info(current_lowest_waiting_time_restaurant.id)[2] - current_order_info[3])
+    update_order_with_restaurant_assignment(current_order_info[0], current_lowest_waiting_time_restaurant.id, current_lowest_waiting_time)
+
+    new_confirmation_dict = {"order_id": current_order_info[0], "customer_id": current_order_info[1], "restaurant_id": current_lowest_waiting_time_restaurant.id, "estimated_finish_time": current_lowest_waiting_time}
+    new_confirmation_json_path = confirmation_json_path + "order_id_" + str(current_order_info[0]) + "_confirmation.json"
+    write_dict_to_json_file(new_confirmation_dict, new_confirmation_json_path)
+    print(new_confirmation_json_path, end=' ')
+
 # input comes from STDIN (standard input)
 for line in sys.stdin:
     # remove leading and trailing whitespace
@@ -49,14 +58,18 @@ for line in sys.stdin:
         current_json_path = parent_dir + json_file_path
         data_as_dict = load_json_file_as_dict(current_json_path)
 
-        if current_order is None:
+        if "order_id" in data_as_dict.keys():
+            if current_order is not None:
+                confirm_order_with_current_lowest_waiting_time_restaurant()
+                current_lowest_waiting_time = 999999999999
+
             current_order = order(data_as_dict)
             current_order_info = get_order_info(current_order.order_id)
         else:
             current_restaurant = restaurant(data_as_dict)
             current_restaurant_estimated_waiting_time = get_estimated_waiting_time(current_order_info, current_restaurant.id)
             current_restaurant_estimated_drive_time = calculate_driving_time(current_order.info.location, current_restaurant.info.location) * 60
-            print("current_restaurant_estimated_waiting_time:", current_restaurant_estimated_waiting_time, ", current_restaurant_estimated_drive_time:", current_restaurant_estimated_drive_time)
+            # print("current_restaurant_estimated_waiting_time:", current_restaurant_estimated_waiting_time, ", current_restaurant_estimated_drive_time:", current_restaurant_estimated_drive_time)
             current_restaurant_estimated_waiting_time = max(current_restaurant_estimated_waiting_time, current_restaurant_estimated_drive_time)
             if current_lowest_waiting_time > current_restaurant_estimated_waiting_time:
                 current_lowest_waiting_time = current_restaurant_estimated_waiting_time
@@ -64,15 +77,7 @@ for line in sys.stdin:
 
 # TO-DO: Make some backup restaurants options...
 
-update_restaurant_current_capacity(current_lowest_waiting_time_restaurant.id, current_lowest_waiting_time_restaurant.max_capacity - current_order_info[3])
-update_order_with_restaurant_assignment(current_order_info[0], current_lowest_waiting_time_restaurant.id, current_lowest_waiting_time)
-
-new_confirmation_dict = {"order_id": current_order_info[0], "customer_id": current_order_info[1], "restaurant_id": current_lowest_waiting_time_restaurant.id, "estimated_finish_time": current_lowest_waiting_time}
-confirmation_json_path += "order_id_" + str(current_order_info[0]) + "_confirmation.json"
-write_dict_to_json_file(new_confirmation_dict, confirmation_json_path)
-
-# print(current_lowest_waiting_time_restaurant.id, end='')
-print(confirmation_json_path, end='')
+confirm_order_with_current_lowest_waiting_time_restaurant()
 
 # if not confirmation_json_path:
 #     print("error", end='')
