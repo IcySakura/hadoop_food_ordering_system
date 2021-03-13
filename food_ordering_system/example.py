@@ -221,7 +221,27 @@ def run_example_display_restaurant_info():
     #Step 3) Get info, and print it:
     (the_name, the_phone_number, the_google_maps_link) = get_restaurant_info_from_id(the_id, restraunt_id_dict)
     print("restaurant details:\n\tname = {}\n\tphone = {}\n\tgoogle maps link = {}\n".format(the_name, the_phone_number, the_google_maps_link))
-          
+
+
+def generate_restraunt_coords_list():
+    #Step 1) Load all restraunt and order details
+    PATH_TO_FOLDER = "C:\\Users\\wills\\Desktop\\hadoop_food_ordering_system\\restaurant_json" #update this path to be path to restraunt json folder
+    list_of_restraunts = create_all_restraunts_from_json_files_in_folder(PATH_TO_FOLDER)
+    (_, _, _, restraunt_id_dict) = create_map_of_menu_items(list_of_restraunts)
+
+    id_to_restaurant_name = dict()
+    id_to_coord_sring = dict()
+    for each_id in restraunt_id_dict:
+        id_to_restaurant_name[int(each_id)] = restraunt_id_dict[each_id].info.name
+        id_to_coord_sring[int(each_id)] = "{},{}".format(restraunt_id_dict[each_id].info.location.lat,restraunt_id_dict[each_id].info.location.lon)
+    
+
+    for each_id in sorted(id_to_restaurant_name):
+        coord_string = id_to_coord_sring[each_id]
+        name = id_to_restaurant_name[each_id]
+
+        print('{},green,marker,"{}",'.format(coord_string, name))
+    
     
 if __name__ == "__main__":
     #run_eample_one()
@@ -233,5 +253,6 @@ if __name__ == "__main__":
     #run_example_wait_time()
     run_list_of_unique_restaurants()
     run_list_of_unique_menu_items()
-    run_generate_random_order()
-    run_example_display_restaurant_info()
+    #run_generate_random_order()
+    #run_example_display_restaurant_info()
+    generate_restraunt_coords_list()

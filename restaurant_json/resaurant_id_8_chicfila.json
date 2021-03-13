@@ -1,0 +1,28 @@
+{
+  "restaurant_id": "8",
+  "restaurant_info": {
+    "name": "Chic-Fil-a",
+    "phone":"+1 (949) 298-4841",
+    
+    "location":{
+      "lat": "33.649654",
+      "lon": "-117.839888"
+    }
+  },
+  "restaurant_capacity":"10",
+  "restaurant_menu":[
+    { "menu_item_name":"chicken",
+      "menu_item_id": "7",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"fries",
+      "menu_item_id": "2",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"milk shake",
+      "menu_item_id": "3",
+      "menu_item_quantity": "3"
+    }
+    ]
+  
+}
