@@ -18,29 +18,33 @@ def show_table(table_name: str):
     print(x)
   print("===========================================End printing table: " + table_name + " ===========================================")
 
-def new_order(order_id: int, customer_id: int, needed_capacity: int):
+def new_order(order_id: str, customer_id: str, needed_capacity: int):
   current_timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
   sql = "INSERT INTO orders (order_id, customer_id, needed_capacity, start_timestamp, order_status) VALUES (%s, %s, %s, %s, %s)"
   val = (order_id, customer_id, needed_capacity, current_timestamp, 0)
   mycursor.execute(sql, val)
   mydb.commit()
 
-def update_order_with_restaurant_assignment(order_id: int, restaurant_id: int, estimated_prepare_time_in_sec: int):
+def update_order_with_restaurant_assignment(order_id: str, restaurant_id: int, estimated_prepare_time_in_sec: int):
   estimated_finish_timestamp = (datetime.now() + timedelta(seconds=estimated_prepare_time_in_sec)).strftime("%d/%m/%Y %H:%M:%S")
   sql = "UPDATE orders SET restaurant_id = %s, estimated_finish_timestamp = %s, order_status = 1 WHERE order_id = %s"
   val = (restaurant_id, estimated_finish_timestamp, order_id)
   mycursor.execute(sql, val)
   mydb.commit()
 
-def update_order_with_finish(order_id: int):
+def update_order_with_finish(order_id: str):
   current_timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
   sql = "UPDATE orders SET actual_finish_timestamp = %s, order_status = 2 WHERE order_id = %s"
   val = (current_timestamp, order_id)
   mycursor.execute(sql, val)
   mydb.commit()
 
-def get_order_info(order_id: int):
-  mycursor.execute("SELECT * FROM orders WHERE order_id = " + str(order_id))
+def get_order_info(order_id: str):
+  # print("get_order_info: order_id is:", order_id)
+  # mycursor.execute("SELECT * FROM orders WHERE order_id = " + order_id)
+  sql = "SELECT * FROM orders WHERE order_id = %s"
+  val = (order_id, )
+  mycursor.execute(sql, val)
   myresult = mycursor.fetchall()
   return myresult[0]
 

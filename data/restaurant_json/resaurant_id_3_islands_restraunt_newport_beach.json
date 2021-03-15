@@ -1,0 +1,32 @@
+{
+  "restaurant_id": "3",
+  "restaurant_info": {
+    "name": "Islands Restaurant Newport Beach",
+    "phone":"+1 (949) 219-0445",
+    
+    "location":{
+      "lat": "33.637749",
+      "lon": "-117.860472"
+    }
+  },
+  "restaurant_capacity":"5",
+  "restaurant_menu":[
+    { "menu_item_name":"hamburger",
+      "menu_item_id": "1",
+      "menu_item_quantity": "10"
+    },
+    { "menu_item_name":"ribs",
+      "menu_item_id": "4",
+      "menu_item_quantity": "30"
+    },
+    { "menu_item_name":"fries",
+      "menu_item_id": "2",
+      "menu_item_quantity": "20"
+    },
+    { "menu_item_name":"salad",
+      "menu_item_id": "5",
+      "menu_item_quantity": "3"
+    }
+    ]
+  
+}

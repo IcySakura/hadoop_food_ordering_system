@@ -1,0 +1,64 @@
+{
+  "restaurant_id": "10",
+  "restaurant_info": {
+    "name": "Yard House",
+    "phone":"+1 (949) 642-0090",
+    
+    "location":{
+      "lat": "33.642450",
+      "lon": "-117.917640"
+    }
+  },
+  "restaurant_capacity":"2",
+  "restaurant_menu":[
+    { "menu_item_name":"hamburger",
+      "menu_item_id": "1",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"pizza",
+      "menu_item_id": "10",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"coffee",
+      "menu_item_id": "11",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"donuts",
+      "menu_item_id": "12",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"fries",
+      "menu_item_id": "2",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"milk shake",
+      "menu_item_id": "3",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"ribs",
+      "menu_item_id": "4",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"salad",
+      "menu_item_id": "5",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"rice",
+      "menu_item_id": "6",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"chicken",
+      "menu_item_id": "7",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"burrito",
+      "menu_item_id": "8",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"chips",
+      "menu_item_id": "9",
+      "menu_item_quantity": "3"
+    }
+    ]
+  
+}

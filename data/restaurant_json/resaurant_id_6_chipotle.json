@@ -1,0 +1,28 @@
+{
+  "restaurant_id": "6",
+  "restaurant_info": {
+    "name": "Chipotle",
+    "phone":"+1 (949) 242-3737",
+    
+    "location":{
+      "lat": "33.649547",
+      "lon": "-117.839277"
+    }
+  },
+  "restaurant_capacity":"6",
+  "restaurant_menu":[
+    { "menu_item_name":"burrito",
+      "menu_item_id": "8",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"rice",
+      "menu_item_id": "6",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"chips",
+      "menu_item_id": "9",
+      "menu_item_quantity": "3"
+    }
+    ]
+  
+}

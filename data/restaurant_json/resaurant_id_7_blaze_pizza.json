@@ -1,0 +1,24 @@
+{
+  "restaurant_id": "7",
+  "restaurant_info": {
+    "name": "Blaze Pizza",
+    "phone":"+1 (949) 298-4841",
+    
+    "location":{
+      "lat": "33.649753",
+      "lon": "-117.839067"
+    }
+  },
+  "restaurant_capacity":"1",
+  "restaurant_menu":[
+    { "menu_item_name":"pizza",
+      "menu_item_id": "10",
+      "menu_item_quantity": "3"
+    },
+    { "menu_item_name":"salad",
+      "menu_item_id": "5",
+      "menu_item_quantity": "3"
+    }
+    ]
+  
+}
