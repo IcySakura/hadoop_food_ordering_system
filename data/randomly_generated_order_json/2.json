@@ -1,0 +1,1 @@
+{"order_id": "fffc88c6-79d5-4be5-817a-e456f0fd5cea", "customer_id": "343c9f6e-c3c2-4ce4-949a-99e3db6639f0", "customer_info": {"name": "Bob Adams", "phone": "(123) 456-7890", "location": {"lat": 33.61987462107475, "lon": -117.85880896802568}}, "preferred_max_distance_km": "10.0", "order": [{"menu_item_name": "rice", "menu_item_id": "6", "menu_item_quantity": "2"}]}

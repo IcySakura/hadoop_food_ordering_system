@@ -1,0 +1,1 @@
+{"order_id": "c24ace05-5b4b-4322-aad8-78b56a604ef1", "customer_id": "0d6e6728-e549-4a71-b8a6-bc5780034335", "customer_info": {"name": "Bob Adams", "phone": "(123) 456-7890", "location": {"lat": 33.6502341346579, "lon": -117.74693402257535}}, "preferred_max_distance_km": "10.0", "order": [{"menu_item_name": "salad", "menu_item_id": "5", "menu_item_quantity": "1"}]}

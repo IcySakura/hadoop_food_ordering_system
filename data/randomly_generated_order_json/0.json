@@ -1,0 +1,1 @@
+{"order_id": "e17c1094-f25b-439a-8151-1d227d06924f", "customer_id": "7d966dc8-a8ae-459f-8857-b1b2638caf81", "customer_info": {"name": "Alice Smith", "phone": "(123) 456-7890", "location": {"lat": 33.729562903071844, "lon": -117.87196917675982}}, "preferred_max_distance_km": "10.0", "order": [{"menu_item_name": "chicken", "menu_item_id": "7", "menu_item_quantity": "2"}]}

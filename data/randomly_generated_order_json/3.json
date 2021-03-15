@@ -1,0 +1,1 @@
+{"order_id": "47186d22-553d-4a17-835b-eeb3167f715d", "customer_id": "06856d11-9c4a-4fa1-b09b-1fd3f71edef0", "customer_info": {"name": "Alice Adams", "phone": "(123) 456-7890", "location": {"lat": 33.54631629594818, "lon": -117.7900007234207}}, "preferred_max_distance_km": "10.0", "order": [{"menu_item_name": "hamburger", "menu_item_id": "1", "menu_item_quantity": "2"}]}

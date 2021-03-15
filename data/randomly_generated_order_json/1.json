@@ -1,0 +1,1 @@
+{"order_id": "9e3bb220-5a32-445d-a0b9-25fb9faded93", "customer_id": "ebdbb25d-337c-4d9b-b5bd-94c99d723869", "customer_info": {"name": "Charlie Smith", "phone": "(123) 456-7890", "location": {"lat": 33.6879019685489, "lon": -117.83920289597366}}, "preferred_max_distance_km": "10.0", "order": [{"menu_item_name": "fries", "menu_item_id": "2", "menu_item_quantity": "1"}]}

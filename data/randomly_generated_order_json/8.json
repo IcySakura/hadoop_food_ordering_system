@@ -1,0 +1,1 @@
+{"order_id": "f3013cb4-cf6b-4e8f-9e5c-90c0af377fc5", "customer_id": "b1764bfb-b152-4aa9-bf57-b71c2b813c05", "customer_info": {"name": "Bob Adams", "phone": "(123) 456-7890", "location": {"lat": 33.67190181167436, "lon": -117.9159105437971}}, "preferred_max_distance_km": "10.0", "order": [{"menu_item_name": "burrito", "menu_item_id": "8", "menu_item_quantity": "2"}]}

@@ -1,0 +1,1 @@
+{"order_id": "0210500c-26c2-4ca4-95f1-9f7aef1460a2", "customer_id": "9a799c09-7f2a-4305-9c9d-ebe0616c5779", "customer_info": {"name": "Alice Adams", "phone": "(123) 456-7890", "location": {"lat": 33.65471585003301, "lon": -117.85184630533267}}, "preferred_max_distance_km": "10.0", "order": [{"menu_item_name": "burrito", "menu_item_id": "8", "menu_item_quantity": "2"}]}

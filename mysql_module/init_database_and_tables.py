@@ -61,6 +61,7 @@ if __name__ == "__main__":
       sql = "INSERT INTO restaurants (restaurant_id, max_capacity, current_capacity) VALUES (%s, %s, %s)"
       val = (current_restaurant.id, current_restaurant.max_capacity, current_restaurant.max_capacity)
       mycursor.execute(sql, val)
+      print("[INFO] Table: inserting restaurant with id:", current_restaurant.id)
 
   mydb.commit()
 
