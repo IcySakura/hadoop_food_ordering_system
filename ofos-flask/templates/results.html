@@ -1,0 +1,33 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #fffee8; }
+	</style>
+{% endblock %}
+
+
+{% block title %}
+OFOS
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+
+      <h1 class="pt-5 pb-2">Results</h1>
+
+      <p><a href="{{ url_for('index') }}">Return to home page</a></p>
+
+      {% with messages = get_flashed_messages() %}
+      <p><strong>Restaurant name:</strong> {{ messages[0] }}</p>
+      <p><strong>Phone number:</strong> {{ messages[1] }}</p>
+      <p><strong>Google Maps link:</strong> <a href="{{ messages[2] }}">Get directions</a> </p>
+      <p><strong>Estimated waiting time:</strong> {{ messages[3] }} seconds</p>
+      {% endwith %}
+    
+</div>
+
+{% endblock %}

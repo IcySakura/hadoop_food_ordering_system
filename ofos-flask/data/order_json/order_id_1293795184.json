@@ -1,0 +1,1 @@
+{"order_id": 1293795184, "customer_id": 544807163, "customer_info": {"name": "test mctest", "phone": "1 (661) 123-4567", "location": {"lat": 221.0, "lon": 112.0}}, "preferred_max_distance_km": 31, "order": [{"menu_item_name": "hamburger", "menu_item_quantity": 1, "menu_item_id": 1}, {"menu_item_name": "milk shake", "menu_item_quantity": 1, "menu_item_id": 3}]}

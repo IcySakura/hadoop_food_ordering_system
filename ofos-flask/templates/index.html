@@ -1,0 +1,68 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #fffee8; }
+	</style>
+{% endblock %}
+
+
+{% block title %}
+OFOS
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+
+      <h1 class="pt-5 pb-2">OFOS</h1>
+
+      <p class="lead">Order your food online for pickup.</p>
+
+      <p class="pt-5"><strong>{{ err_message }}</strong></p>
+
+      <form class="form" method="post" role="form">
+          {{ form.csrf_token }}
+          {{wtf.form_field(form.customer_name)}}
+          {{wtf.form_field(form.latitude)}}
+          {{wtf.form_field(form.longitude)}}
+          {{wtf.form_field(form.preferred_max_distance)}}
+
+      </hr class="col-xs-12">
+
+      <h2 class="pt-5 pb-2">Menu</h1>
+        {% for menu_entry in form.menu %}
+            {{ menu_entry.hidden_tag() }}
+            <h4>{{ menu_entry.menu_item_name.data.capitalize() }}</h3>
+            <div style="width: 5%">{{ wtf.form_field(menu_entry.menu_item_quantity, class='form-control') }}</div>
+        {% endfor %}
+        <input class="btn btn-primary" type="submit" value="Submit">
+
+        <div class="pt-5 pb-2"> </div>
+
+	  </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+<!--
+	TIPS about using Flask-Bootstrap:
+	Flask-Bootstrap keeps the default Bootstrap stylesheet in the
+	env/lib/python3.8/site-packages/flask_bootstrap/static/css/ directory.
+	You can replace the CSS file. HOWEVER, when you reinstall requirements
+	for your project, you would overwrite all the Bootstrap files
+	with the defaults.
+	Flask-Bootstrap templates are in
+	env/lib/python3.8/site-packages/flask_bootstrap/static/templates
+	Modifying the Bootstrap base.html template: use directives and
+	Jinja2's super() function. See Jinja2 documentation and also this:
+	https://pythonhosted.org/Flask-Bootstrap/basic-usage.html
+-->

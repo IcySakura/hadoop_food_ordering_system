@@ -1,0 +1,26 @@
+{
+  "restaurant_id": "1",
+  "restaurant_info": {
+    "name": "In-N-Out Burger",
+    "phone":"1 (800) 786-1000",
+    "location":{
+      "lat": "33.650212",
+      "lon": "-117.840672"
+    }
+  },
+  "restaurant_capacity":"10",
+  "restaurant_menu":[
+    { "menu_item_name":"hamburger",
+      "menu_item_id": "1",
+      "menu_item_quantity": "10"
+    },
+    { "menu_item_name":"fries",
+      "menu_item_id": "2",
+      "menu_item_quantity": "20"
+    },
+    { "menu_item_name":"milk shake",
+      "menu_item_id": "3",
+      "menu_item_quantity": "12"
+    }
+    ]
+}

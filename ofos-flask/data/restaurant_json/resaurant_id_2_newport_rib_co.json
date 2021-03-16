@@ -1,0 +1,28 @@
+{
+  "restaurant_id": "2",
+  "restaurant_info": {
+    "name": "Newport Rib Company",
+    "phone":"1 (949) 631 2110",
+    
+    "location":{
+      "lat": "33.654029",
+      "lon": "-117.918763"
+    }
+  },
+  "restaurant_capacity":"5",
+  "restaurant_menu":[
+    { "menu_item_name":"ribs",
+      "menu_item_id": "4",
+      "menu_item_quantity": "30"
+    },
+    { "menu_item_name":"fries",
+      "menu_item_id": "2",
+      "menu_item_quantity": "20"
+    },
+    { "menu_item_name":"salad",
+      "menu_item_id": "5",
+      "menu_item_quantity": "3"
+    }
+    ]
+  
+}

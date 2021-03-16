@@ -1,0 +1,1 @@
+{"order_id": 1560037985, "customer_id": 210455331, "customer_info": {"name": "testtest"}, "location": {"lat": 123.0, "lon": 321.0}, "preferred_max_distance_km": 12, "order": [{"menu_item_name": "ribs", "menu_item_quantity": 1, "menu_item_id": 4}, {"menu_item_name": "fries", "menu_item_quantity": 1, "menu_item_id": 2}]}

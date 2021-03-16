@@ -1,0 +1,1 @@
+{"order_id": 297879547, "customer_id": 1298984069, "customer_info": {"name": "tees", "phone": "1 (661) 123-4567", "location": {"lat": 22.0, "lon": 111.0}}, "preferred_max_distance_km": 44, "order": [{"menu_item_name": "hamburger", "menu_item_quantity": 1, "menu_item_id": 1}, {"menu_item_name": "milk shake", "menu_item_quantity": 1, "menu_item_id": 3}]}
