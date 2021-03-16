@@ -11,12 +11,21 @@ from restaurant import restaurant
 from order import order
 from location import *
 from mysql_module_lib import *
+import time
 
 current_order = None
 current_order_items = []
 current_restaurant = None
 parent_dir = "./"
 current_json_path = ""
+
+eval_log_path = "eval_use/mapper.log"
+
+eval_file = open(eval_log_path, "a")
+
+def write_current_time_to_eval_file():
+    eval_file.write(str(time.perf_counter()))
+    eval_file.write("\n")
 
 # input comes from STDIN (standard input)
 for line in sys.stdin:
@@ -30,6 +39,7 @@ for line in sys.stdin:
         data_as_dict = load_json_file_as_dict(current_json_path)
 
         if "order_id" in data_as_dict.keys():
+            write_current_time_to_eval_file()
             current_order = order(data_as_dict)
             current_order_needed_capacity = 0
             for m_item in current_order.order_items:

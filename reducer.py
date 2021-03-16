@@ -11,6 +11,7 @@ from restaurant import restaurant
 from order import order
 from mysql_module_lib import *
 from wait_time import calculate_approximate_wait_time_and_number_of_cooks_occupied, calculate_static_prep_time, calculate_driving_time
+import time
 
 current_order = None
 current_order_info = None
@@ -20,6 +21,14 @@ current_lowest_waiting_time_restaurant = None
 parent_dir = "./"
 current_json_path = ""
 confirmation_json_path = parent_dir + "data/confirmation_json/"
+
+eval_log_path = "eval_use/reducer.log"
+
+eval_file = open(eval_log_path, "a")
+
+def write_current_time_to_eval_file():
+    eval_file.write(str(time.perf_counter()))
+    eval_file.write("\n")
 
 def get_estimated_waiting_time(order_info, restaurant_id):
     result = 5 * 60  # Base time of 5 mins
@@ -47,6 +56,7 @@ def confirm_order_with_current_lowest_waiting_time_restaurant():
     new_confirmation_json_path = confirmation_json_path + "order_id_" + str(current_order_info[0]) + "_confirmation.json"
     write_dict_to_json_file(new_confirmation_dict, new_confirmation_json_path)
     print(new_confirmation_json_path, end=' ')
+    write_current_time_to_eval_file()
 
 # input comes from STDIN (standard input)
 for line in sys.stdin:
