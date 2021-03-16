@@ -51,6 +51,8 @@ for line in sys.stdin:
 
             # Check if restaurant can fulfill the order
             current_restaurant_items = [m_item.name for m_item in current_restaurant.menu_items]
+            # if current_order.order_id == "47186d22-553d-4a17-835b-eeb3167f715d":
+            #     print("Let's see what this restaurant has:", current_restaurant_items)
             if not all(m_item in current_restaurant_items for m_item in current_order_items):
                 continue
             print(current_json_path, end=' ')

@@ -26,6 +26,8 @@ def new_order(order_id: str, customer_id: str, needed_capacity: int):
   mydb.commit()
 
 def update_order_with_restaurant_assignment(order_id: str, restaurant_id: int, estimated_prepare_time_in_sec: int):
+  # print("Current time:", datetime.now(), ", timedelta:", timedelta(seconds=estimated_prepare_time_in_sec))
+  # print("Add them together:", (datetime.now() + timedelta(seconds=estimated_prepare_time_in_sec)))
   estimated_finish_timestamp = (datetime.now() + timedelta(seconds=estimated_prepare_time_in_sec)).strftime("%d/%m/%Y %H:%M:%S")
   sql = "UPDATE orders SET restaurant_id = %s, estimated_finish_timestamp = %s, order_status = 1 WHERE order_id = %s"
   val = (restaurant_id, estimated_finish_timestamp, order_id)

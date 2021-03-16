@@ -37,6 +37,7 @@ def get_estimated_waiting_time(order_info, restaurant_id):
     if estimated_remaining_capacity < 0:
         result -= estimated_remaining_capacity * 2 * 60 # Assuming restaurant can restore 1 capacity per 2 mins
         result += estimated_remaining_items * 2 * 60    # Asumming each item will cost 2 mins
+    return result
 
 def confirm_order_with_current_lowest_waiting_time_restaurant():
     update_restaurant_current_capacity(current_lowest_waiting_time_restaurant.id, get_restaurant_info(current_lowest_waiting_time_restaurant.id)[2] - current_order_info[3])
@@ -60,13 +61,19 @@ for line in sys.stdin:
 
         if "order_id" in data_as_dict.keys():
             if current_order is not None:
+                if current_restaurant is None:
+                    print("[Error]: No restaurant can fulfill the order:", current_order.order_id)
+                    exit()
                 confirm_order_with_current_lowest_waiting_time_restaurant()
+                current_restaurant = None
                 current_lowest_waiting_time = 999999999999
 
             current_order = order(data_as_dict)
             current_order_info = get_order_info(current_order.order_id)
+            # print("New Order coming in:", current_order.order_id)
         else:
             current_restaurant = restaurant(data_as_dict)
+            # print("New Restaurant coming in:", current_restaurant.id)
             current_restaurant_estimated_waiting_time = get_estimated_waiting_time(current_order_info, current_restaurant.id)
             current_restaurant_estimated_drive_time = calculate_driving_time(current_order.info.location, current_restaurant.info.location) * 60
             # print("current_restaurant_estimated_waiting_time:", current_restaurant_estimated_waiting_time, ", current_restaurant_estimated_drive_time:", current_restaurant_estimated_drive_time)
