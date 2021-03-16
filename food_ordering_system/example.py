@@ -1,5 +1,5 @@
 from json_parser import *
-from restaurant import restaurant
+from restaurant import restaurant, generate_random_restraunt
 from order import order, construct_order_object, create_random_order
 from confirmation import confirmation
 from wait_time import calculate_approximate_wait_time_and_number_of_cooks_occupied, calculate_static_prep_time, calculate_driving_time
@@ -242,6 +242,22 @@ def generate_restraunt_coords_list():
 
         print('{},green,marker,"{}",'.format(coord_string, name))
     
+def run_sample_rest_generation():
+    #Step 1) Load all restraunt and order details
+    PATH_TO_FOLDER = "C:\\Users\\wills\\Desktop\\hadoop_food_ordering_system\\restaurant_json" #update this path to be path to restraunt json folder
+    list_of_restraunts = create_all_restraunts_from_json_files_in_folder(PATH_TO_FOLDER)
+    (menu_item_id_to_restraunt_id, restraunt_id_to_menu_item_id, menu_item_dict,restraunt_id_dict) = create_map_of_menu_items(list_of_restraunts)
+
+    #Step 2) Specify max number of dishes to serve at generated rest. and capacity
+    MAX_NUMBER_OF_DISHES = 5
+    MIN_CAPACITY = 1
+    MAX_CAPACITY = 10
+
+    #Step 3) Generate rest.
+    generate_rest = generate_random_restraunt(menu_item_dict,max_number_of_dishes=MAX_NUMBER_OF_DISHES,min_capacity=MIN_CAPACITY,max_capacity=MAX_CAPACITY)
+
+    #Step 4) *optional* print rest.
+    json_pretty_print(generate_rest.convert_to_dict())
     
 if __name__ == "__main__":
     #run_eample_one()
@@ -251,8 +267,9 @@ if __name__ == "__main__":
     #run_test_location()
     #run_example_order_generation()
     #run_example_wait_time()
-    run_list_of_unique_restaurants()
-    run_list_of_unique_menu_items()
+    #run_list_of_unique_restaurants()
+    #run_list_of_unique_menu_items()
     #run_generate_random_order()
     #run_example_display_restaurant_info()
-    generate_restraunt_coords_list()
+    #generate_restraunt_coords_list()
+    run_sample_rest_generation()
