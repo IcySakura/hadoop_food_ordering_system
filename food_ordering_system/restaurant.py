@@ -78,6 +78,7 @@ def generate_random_restraunt(menu_item_dict,max_number_of_dishes=10,min_capacit
     location_dict[LOCATION_LAT_KEY] = rest_coord[0]; location_dict[LOCATION_LON_KEY]= rest_coord[1];
     info_dict[INFO_NAME_KEY] = rest_name; info_dict[INFO_PHONE_KEY] = rest_phone; info_dict[INFO_LOCATION_KEY] = location_dict
     dictionary_to_construct_rest[RESTAURANT_INFO_KEY] = info_dict
+    dictionary_to_construct_rest[RESTAUARNT_ID_KEY] = rest_id
     dictionary_to_construct_rest[RESTAURANT_MAX_CAPACITY_KEY] = randrange(min_capacity,max_capacity)
 
     the_rest = restaurant(dictionary_to_construct_rest)
