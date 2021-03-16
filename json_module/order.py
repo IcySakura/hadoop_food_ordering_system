@@ -57,7 +57,7 @@ class order:
         to_return[ORDER_KEY] = order_item_dict_list
         return to_return
 
-def construct_order_object(items_to_order, customer_max_distance=10.0, order_id=None,customer_id=None,customer_name=None,customer_phone=None,customer_coord=None):
+def construct_order_object(items_to_order, customer_max_distance=20.0, order_id=None,customer_id=None,customer_name=None,customer_phone=None,customer_coord=None):
     location_dict = {}
     info_dict = {}
     dictionary_to_construct_order = {}
