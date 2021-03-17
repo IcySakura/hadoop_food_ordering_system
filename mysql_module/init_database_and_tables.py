@@ -36,7 +36,7 @@ if __name__ == "__main__":
   mycursor.execute("USE " + MYSQL_DATABASE_NAME)
 
   try:
-    mycursor.execute("CREATE TABLE orders (order_id VARCHAR(255) NOT NULL PRIMARY KEY, customer_id VARCHAR(255), restaurant_id INT, needed_capacity INT, start_timestamp VARCHAR(255), estimated_finish_timestamp VARCHAR(255), actual_finish_timestamp VARCHAR(255), order_status INT)")
+    mycursor.execute("CREATE TABLE orders (order_id VARCHAR(255) NOT NULL PRIMARY KEY, customer_id VARCHAR(255), restaurant_id VARCHAR(255), needed_capacity INT, start_timestamp VARCHAR(255), estimated_finish_timestamp VARCHAR(255), actual_finish_timestamp VARCHAR(255), order_status INT)")
   except mysql.connector.errors.ProgrammingError as e:
     print("[Warning] Table: orders probably already exist")  
   '''

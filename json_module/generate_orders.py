@@ -28,6 +28,7 @@ def run_generate_random_order(path_to_store):
     '''generate a random order (that can be fufilled by atleast one restraunt)'''
     #Step 1) Load all restraunt and order details
     PATH_TO_FOLDER = "../data/restaurant_json" #update this path to be path to restraunt json folder
+    # PATH_TO_FOLDER = "../data/randomly_generated_restaurants" #update this path to be path to restraunt json folder
     list_of_restraunts = create_all_restraunts_from_json_files_in_folder(PATH_TO_FOLDER)
     (menu_item_id_to_restraunt_id, restraunt_id_to_menu_item_id, menu_item_dict,restraunt_id_dict) = create_map_of_menu_items(list_of_restraunts)
     ##  Note: this will only be needed to be done once, even if creating multiple random orders

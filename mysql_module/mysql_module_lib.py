@@ -25,7 +25,7 @@ def new_order(order_id: str, customer_id: str, needed_capacity: int):
   mycursor.execute(sql, val)
   mydb.commit()
 
-def update_order_with_restaurant_assignment(order_id: str, restaurant_id: int, estimated_prepare_time_in_sec: int):
+def update_order_with_restaurant_assignment(order_id: str, restaurant_id: str, estimated_prepare_time_in_sec: int):
   # print("Current time:", datetime.now(), ", timedelta:", timedelta(seconds=estimated_prepare_time_in_sec))
   # print("Add them together:", (datetime.now() + timedelta(seconds=estimated_prepare_time_in_sec)))
   estimated_finish_timestamp = (datetime.now() + timedelta(seconds=estimated_prepare_time_in_sec)).strftime("%d/%m/%Y %H:%M:%S")
@@ -50,7 +50,7 @@ def get_order_info(order_id: str):
   myresult = mycursor.fetchall()
   return myresult[0]
 
-def new_restaurant(restaurant_id: int, max_capacity: int):
+def new_restaurant(restaurant_id: str, max_capacity: int):
   sql = "INSERT INTO restaurants (restaurant_id, max_capacity, current_capacity) VALUES (%s, %s, %s)"
   val = (restaurant_id, max_capacity, max_capacity)
   mycursor.execute(sql, val)
@@ -62,7 +62,10 @@ def update_restaurant_current_capacity(restaurant_id: int, new_current_capacity:
   mycursor.execute(sql, val)
   mydb.commit()
 
-def get_restaurant_info(restaurant_id: int):
-  mycursor.execute("SELECT * FROM restaurants WHERE restaurant_id = " + str(restaurant_id))
+def get_restaurant_info(restaurant_id: str):
+  # mycursor.execute("SELECT * FROM restaurants WHERE restaurant_id = " + str(restaurant_id))
+  sql = "SELECT * FROM restaurants WHERE restaurant_id = %s"
+  val = (restaurant_id, )
+  mycursor.execute(sql, val)
   myresult = mycursor.fetchall()
   return myresult[0]
