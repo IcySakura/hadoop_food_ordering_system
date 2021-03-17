@@ -1,0 +1,1 @@
+{"order_id": 2141397838, "customer_id": 731733850, "customer_info": {"name": "teesst"}, "location": {"lat": 121.0, "lon": 222.0}, "preferred_max_distance_km": 34, "order": [{"menu_item_name": "hamburger", "menu_item_quantity": 1, "menu_item_id": 1}, {"menu_item_name": "milk shake", "menu_item_quantity": 1, "menu_item_id": 3}]}

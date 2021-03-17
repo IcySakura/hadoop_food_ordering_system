@@ -1,0 +1,1 @@
+{"order_id": 1258629206, "customer_id": 877120542, "customer_info": {"name": "Andy", "phone": "1 (661) 123-4567", "location": {"lat": 221.0, "lon": 314.0}}, "preferred_max_distance_km": 41, "order": [{"menu_item_name": "fries", "menu_item_quantity": 1, "menu_item_id": 2}, {"menu_item_name": "salad", "menu_item_quantity": 1, "menu_item_id": 5}]}

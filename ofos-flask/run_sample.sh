@@ -1,0 +1,2 @@
+# hadoop jar /home/ubuntu/hadoop_install/hadoop-*/share/hadoop/tools/lib/hadoop-*streaming*.jar -file /home/ubuntu/hadoop_pythton_example/mapper.py -mapper /home/ubuntu/hadoop_pythton_example/mapper.py -file /home/ubuntu/hadoop_pythton_example/reducer.py -reducer /home/ubuntu/hadoop_pythton_example/reducer.py -input /home/ubuntu/hadoop_pythton_example/input/* -output /home/ubuntu/hadoop_pythton_example/output
+mapred streaming -input input.txt -output sample_output -mapper mapper.py -reducer reducer.py

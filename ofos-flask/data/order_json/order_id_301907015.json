@@ -1,0 +1,1 @@
+{"order_id": 301907015, "customer_id": 1939772868, "customer_info": {"name": "testre"}, "location": {"lat": 221.0, "lon": 112.0}, "preferred_max_distance_km": 31, "order": [{"menu_item_name": "ribs", "menu_item_quantity": 1, "menu_item_id": 4}, {"menu_item_name": "fries", "menu_item_quantity": 1, "menu_item_id": 2}]}

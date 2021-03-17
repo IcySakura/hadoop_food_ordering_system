@@ -1,0 +1,1 @@
+{"order_id": 950500041, "customer_id": 732758527, "customer_info": {"name": "tes"}, "location": {"lat": 123.0, "lon": 321.0}, "preferred_max_distance_km": 21, "order": [{"menu_item_name": "ribs", "menu_item_quantity": 1, "menu_item_id": 4}, {"menu_item_name": "hamburger", "menu_item_quantity": 1, "menu_item_id": 1}]}
