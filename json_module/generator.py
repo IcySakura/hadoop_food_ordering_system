@@ -31,4 +31,6 @@ def generate_phone_number():
     #for now, just return a constant
     return "(123) 456-7890"
 
-    
+def generate_rest_name():
+    #for now, just return a constant
+    return "Sample restraunt"
